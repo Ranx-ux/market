@@ -1,0 +1,201 @@
+/* Reset CSS untuk memastikan semua browser tampil serupa */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000; /* Background hitam untuk tema TikTok */
+  font-family: 'Arial', sans-serif;
+  color: #fff;
+}
+
+.container {
+  max-width: 400px;
+  margin: 50px auto;
+  text-align: center;
+  padding: 20px;
+  background-color: #111; /* Background abu gelap untuk kontainer */
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1s ease-out;
+}
+
+/* Animasi fade-in untuk seluruh kontainer */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.profile-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 4px solid #69c2b0; /* Warna hijau neon seperti TikTok */
+  animation: zoomIn 1s ease-out;
+}
+
+/* Animasi zoom-in untuk gambar profil */
+@keyframes zoomIn {
+  from {
+    transform: scale(0.8);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.username {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #fff;
+  opacity: 0;
+  animation: fadeInUsername 1.5s ease-out 0.5s forwards;
+}
+
+/* Animasi fade-in untuk nama pengguna */
+@keyframes fadeInUsername {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.bio {
+  font-size: 16px;
+  color: #ddd;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeInBio 1.5s ease-out 1s forwards;
+}
+
+/* Animasi fade-in untuk bio */
+@keyframes fadeInBio {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  opacity: 0;
+  animation: fadeInLinks 1s ease-out 1.5s forwards;
+}
+
+/* Animasi fade-in untuk tombol link */
+@keyframes fadeInLinks {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  font-size: 16px;
+  text-align: center;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  justify-content: center;
+  position: relative;
+}
+
+/* Tombol dengan efek hover */
+.btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Efek ripple untuk tombol */
+.btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.bg-primary {
+  background-color: #69c2b0; /* Hijau neon */
+}
+
+.bg-primary:hover {
+  background-color: #42b99d; /* Hijau lebih gelap untuk efek hover */
+}
+
+.bg-whatsapp {
+  background-color: #25d366; /* Warna hijau WhatsApp */
+}
+
+.bg-whatsapp:hover {
+  background-color: #128c7e; /* Warna lebih gelap untuk efek hover */
+}
+
+.link-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 12px; /* Menambahkan jarak antara ikon dan teks */
+}
+
+.fab {
+  font-size: 20px;
+}
+
+/* Responsiveness */
+@media (max-width: 480px) {
+  .container {
+    margin: 20px;
+    padding: 15px;
+  }
+
+  .profile-img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .username {
+    font-size: 22px;
+  }
+
+  .bio {
+    font-size: 14px;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .link-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
