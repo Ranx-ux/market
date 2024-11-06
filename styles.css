@@ -1,237 +1,296 @@
-/* Reset CSS untuk memastikan semua browser tampil serupa */
+/* Reset untuk memastikan tampilan konsisten di semua browser */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  background: #111; /* Background gelap untuk memberikan kesan elegan */
-  font-family: 'Roboto', sans-serif; /* Menggunakan font yang modern */
-  color: #fff;
+    background: linear-gradient(to right, #4b6cb7, #182848); /* Gradien biru laut ke ungu */
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    padding: 20px;
+    overflow-x: hidden; /* Mencegah scrolling horizontal */
 }
 
-.container {
-  max-width: 450px;
-  margin: 50px auto;
-  text-align: center;
-  padding: 30px;
-  background-color: #1c1c1c; /* Kontainer dengan warna abu-abu gelap */
-  border-radius: 20px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 1s ease-out;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Memastikan konten di dalamnya terpusat secara horizontal */
-  justify-content: center; /* Menempatkan konten di tengah secara vertikal */
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Transparansi hitam */
+    padding: 10px 0;
+    z-index: 999;
 }
 
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar li {
+    margin: 0 20px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 5px 15px;
+    border-radius: 30px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Animasi untuk teks selamat datang */
+.welcome-text {
+    text-align: center;
+    margin-top: 100px; /* Memberikan jarak dari navbar */
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+}
+
+.welcome-text h1 {
+    font-size: 3em;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.welcome-text p {
+    font-size: 1.2em;
+    color: #eaeaea;
+}
+
+/* Keyframe untuk fade in effect */
 @keyframes fadeIn {
-  from {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Container untuk grid produk */
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Grid responsif */
+    gap: 20px;
+    max-width: 1200px;
+    margin-top: 50px;
+}
+
+/* Style untuk tiap produk */
+.product {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    animation: fadeInProduct 1s forwards;
 }
 
-.profile-img {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 20px;
-  border: 4px solid #69c2b0; /* Warna hijau neon */
-  animation: zoomIn 1s ease-out;
+@keyframes fadeInProduct {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-@keyframes zoomIn {
-  from {
-    transform: scale(0.8);
-  }
-  to {
-    transform: scale(1);
-  }
+.product:hover {
+    transform: scale(1.05); /* Efek zoom pada hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Efek shadow pada hover */
 }
 
-.username {
-  font-size: 30px;
-  font-weight: 700;
-  margin-bottom: 15px;
-  color: #fff;
-  opacity: 0;
-  animation: fadeInUsername 1.5s ease-out 0.5s forwards;
+.product-img {
+    width: 100%;
+    height: auto;
+    border-bottom: 2px solid #eee;
+    transition: transform 0.3s ease;
 }
 
-@keyframes fadeInUsername {
-  from {
+.product-img:hover {
+    transform: scale(1.05); /* Zoom saat hover */
+}
+
+.product-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.product-name {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.product-description {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.product-price {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #2ecc71;
+    margin-bottom: 20px;
+}
+
+.buy-btn {
+    padding: 12px 20px;
+    font-size: 1.1em;
+    background-color: #25d366; /* WhatsApp green */
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.buy-btn:hover {
+    background-color: #128c7e; /* WhatsApp darker green */
+    transform: translateY(-5px);
+}
+
+.buy-btn:active {
+    transform: translateY(2px); /* Efek saat tombol ditekan */
+}
+
+/* Animasi Terima Kasih */
+.thank-you-message {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 1.5em;
+    color: #fff;
     opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    animation: fadeInMessage 2s forwards;
 }
 
-.bio {
-  font-size: 16px;
-  color: #ddd;
-  margin-bottom: 30px;
-  opacity: 0;
-  animation: fadeInBio 1.5s ease-out 1s forwards;
+@keyframes fadeInMessage {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-@keyframes fadeInBio {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Mengatur bagian layanan untuk terpusat di dalam kontainer */
-.services {
-  text-align: left;
-  opacity: 0;
-  animation: fadeInServices 1s ease-out 1.5s forwards;
-  width: 100%;
-}
-
-.services-title {
-  font-size: 20px;
-  font-weight: 600;
-  color: #fff;
-  margin-bottom: 15px;
-  text-align: left;
-}
-
-.service-list {
-  list-style-type: none;
-  color: #ddd;
-  font-size: 14px;
-  padding-left: 0;
-  line-height: 1.8;
-}
-
-.service-list li {
-  margin-bottom: 15px;
-}
-
-@keyframes fadeInServices {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.links {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  opacity: 0;
-  animation: fadeInLinks 1s ease-out 2s forwards;
-  width: 100%;
-}
-
-@keyframes fadeInLinks {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.btn {
-  display: flex;
-  align-items: center;
-  padding: 15px 25px;
-  font-size: 18px;
-  text-align: center;
-  color: #fff;
-  border-radius: 10px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  font-weight: bold;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
-  justify-content: center;
-  position: relative;
-}
-
-.btn:hover {
-  transform: translateY(-7px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-}
-
-.btn:active {
-  transform: scale(0.98);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.bg-primary {
-  background-color: #69c2b0; /* Warna hijau neon */
-}
-
-.bg-primary:hover {
-  background-color: #42b99d; /* Hijau lebih gelap */
-}
-
-.bg-whatsapp {
-  background-color: #25d366; /* Warna hijau WhatsApp */
-}
-
-.bg-whatsapp:hover {
-  background-color: #128c7e; /* Hijau lebih gelap */
-}
-
-.link-icon {
-  width: 24px;
-  height: 24px;
-  margin-right: 12px;
-}
-
-.fab {
-  font-size: 20px;
-}
-
-@media (max-width: 480px) {
-  .container {
-    margin: 20px;
+/* Tombol Scroll to Top */
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ff6f61;
+    color: white;
+    border: none;
     padding: 15px;
-  }
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    display: none;
+    font-size: 20px;
+    transition: background-color 0.3s ease;
+}
 
-  .profile-img {
-    width: 120px;
-    height: 120px;
-  }
+.scroll-to-top:hover {
+    background-color: #ff4a3d;
+}
 
-  .username {
-    font-size: 24px;
-  }
+/* Responsivitas untuk perangkat mobile */
+@media (max-width: 768px) {
+    .welcome-text h1 {
+        font-size: 2em;
+    }
 
-  .bio {
-    font-size: 14px;
-  }
+    .product-name {
+        font-size: 1.2em;
+    }
 
-  .btn {
-    font-size: 14px;
-    padding: 12px;
-  }
+    .product-description {
+        font-size: 1em;
+    }
 
-  .link-icon {
-    width: 20px;
-    height: 20px;
-  }
+    .product-price {
+        font-size: 1.2em;
+    }
+
+    .buy-btn {
+        font-size: 1em;
+        padding: 10px 18px;
+    }
+
+    /* Navbar Mobile - hamburger menu style */
+    .navbar ul {
+        flex-direction: column;
+        display: none;
+    }
+
+    .navbar.active ul {
+        display: flex;
+    }
+
+    .navbar a {
+        margin: 10px 0;
+    }
+
+    .hamburger {
+        display: block;
+        cursor: pointer;
+    }
+
+    .hamburger div {
+        width: 30px;
+        height: 3px;
+        margin: 6px 0;
+        background-color: white;
+        transition: 0.4s;
+    }
+}
+
+/* Hamburger menu for mobile */
+.hamburger {
+    display: none;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.hamburger.active div:nth-child(1) {
+    transform: rotate(-45deg);
+    position: relative;
+    top: 6px;
+}
+
+.hamburger.active div:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active div:nth-child(3) {
+    transform: rotate(45deg);
+    position: relative;
+    top: -6px;
 }
